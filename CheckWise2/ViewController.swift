@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UITableViewController {
 
     @IBOutlet var todoTableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,10 +42,120 @@ class ViewController: UITableViewController {
         let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row) //Darstellung der Todos aus dem Array an der jeweiligen Index-Stelle
         cell.textLabel?.text = todo.name
         
+        checkAccessoryType(cell: cell, isCompleted: todo.completed)
+        
         return cell
     }
     
+    //CheckAccessory Funktion
+    func checkAccessoryType(cell: UITableViewCell, isCompleted: Bool) {
+        if isCompleted {
+            cell.accessoryType = .checkmark
+            //cell.textLabel!.text?
+            
+        } else {
+            cell.accessoryType = .none
+        }
+    }
+    
+    //Check Tab
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
+        todo.completed = !todo.completed
+        CoreDataManager.shared.safeContext()
+        
+        if let cell = tableView.cellForRow(at: indexPath){
+            checkAccessoryType(cell: cell, isCompleted: todo.completed)
+        }
+    }
+    
+    //CheckSwipe
+    override func tableView(_ tableView: UITableView,
+                   leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let closeAction = UIContextualAction(style: .normal, title:  "Check", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
+            todo.completed = !todo.completed
+            CoreDataManager.shared.safeContext()
+            
+            if let cell = tableView.cellForRow(at: indexPath){
+                self.checkAccessoryType(cell: cell, isCompleted: todo.completed)
+            }
+            
+            print("OK, marked as Closed")
+            success(true)
+        })
+        closeAction.backgroundColor = .blue
+        closeAction.image = UIImage(named: "check")
 
+        
+        return UISwipeActionsConfiguration(actions: [closeAction])
+        
+    }
+    
+    //Delete Swipe
+    override func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let modifyAction = UIContextualAction(style: .destructive, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            CoreDataManager.shared.safeContext()
+            
+            print("Löschen")
+            success(true)
+        })
+        modifyAction.image = UIImage(named: "trash1")
+        modifyAction.backgroundColor = .red
+        
+        return UISwipeActionsConfiguration(actions: [modifyAction])
+    }
+    
+    //Alternativer CheckSwipe
+    /*override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .normal, title: "Check") { (action, view, completion) in
+            
+            let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
+            todo.completed = !todo.completed
+            CoreDataManager.shared.safeContext()
+            
+            if let cell = tableView.cellForRow(at: indexPath){
+                self.checkAccessoryType(cell: cell, isCompleted: todo.completed)
+            }
+            
+            print("OK, marked as Closed")
+            
+        }
+        
+        action.backgroundColor = .blue
+        action.image = UIImage(named: "check")
+
+        return UISwipeActionsConfiguration(actions: [action])
+    }*/
+    
+    //Delete Swipe
+    /*override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            
+            let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
+            let cell = tableView.cellForRow(at: indexPath)
+            
+            }
+        
+            action.image = UIImage(named: "trash")
+            action.backgroundColor = .red
+            return UISwipeActionsConfiguration(actions: [action])
+    }*/
+    
+    /*override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            //todos.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            CoreDataManager.shared.safeContext()
+        }
+    }*/
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

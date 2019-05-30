@@ -12,7 +12,7 @@ import CoreData
 class CoreDataManager {
     
     static let shared = CoreDataManager()
-    var todos = [Todo]()
+    public var todos = [Todo]()
     
     // Cotnext als Variable
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //Zugriff auf App-Delegate

@@ -62,6 +62,7 @@ class AddTodoViewController: UIViewController {
         CoreDataManager.shared.createObj(name: text)
         
         dismiss(animated: true)
+        textView.resignFirstResponder() //schließt Keyboard direkt nachdem done gedrückt wurde
     }
     
 }
