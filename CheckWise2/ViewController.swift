@@ -51,10 +51,28 @@ class ViewController: UITableViewController {
     func checkAccessoryType(cell: UITableViewCell, isCompleted: Bool) {
         if isCompleted {
             cell.accessoryType = .checkmark
-            //cell.textLabel!.text?
+            
+            //Strikethough Methode
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: cell.textLabel!.text!)
+            
+            attributeString.addAttribute(.strikethroughStyle, value: 1, range: NSRange(location: 0, length: cell.textLabel!.text!.count))
+            
+            cell.textLabel?.attributedText = attributeString
             
         } else {
             cell.accessoryType = .none
+            
+            //Kein Strikethrough mehr
+            let underLineColor = UIColor(white: 1, alpha: 0)
+            let underlineAttributes = [NSAttributedString.Key.underlineColor: underLineColor] as [NSAttributedString.Key : Any]
+    
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: cell.textLabel!.text!, attributes: underlineAttributes)
+            
+            attributeString.addAttribute(.underlineStyle, value: 1,
+                                        range: NSRange(location: 0,
+                                        length: cell.textLabel!.text!.count))
+            
+            cell.textLabel?.attributedText = attributeString
         }
     }
     
@@ -100,7 +118,8 @@ class ViewController: UITableViewController {
     {
         let modifyAction = UIContextualAction(style: .destructive, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             
-            CoreDataManager.shared.safeContext()
+            /*let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
+            CoreDataManager.shared.safeContext()*/
             
             print("Löschen")
             success(true)
@@ -111,51 +130,8 @@ class ViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
     
-    //Alternativer CheckSwipe
-    /*override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let action = UIContextualAction(style: .normal, title: "Check") { (action, view, completion) in
-            
-            let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
-            todo.completed = !todo.completed
-            CoreDataManager.shared.safeContext()
-            
-            if let cell = tableView.cellForRow(at: indexPath){
-                self.checkAccessoryType(cell: cell, isCompleted: todo.completed)
-            }
-            
-            print("OK, marked as Closed")
-            
-        }
-        
-        action.backgroundColor = .blue
-        action.image = UIImage(named: "check")
-
-        return UISwipeActionsConfiguration(actions: [action])
-    }*/
     
-    //Delete Swipe
-    /*override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-            
-        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            
-            let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
-            let cell = tableView.cellForRow(at: indexPath)
-            
-            }
-        
-            action.image = UIImage(named: "trash")
-            action.backgroundColor = .red
-            return UISwipeActionsConfiguration(actions: [action])
-    }*/
     
-    /*override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCell.EditingStyle.delete {
-            //todos.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            CoreDataManager.shared.safeContext()
-        }
-    }*/
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

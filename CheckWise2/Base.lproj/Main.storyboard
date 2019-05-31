@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Itmes-->
+        <!--Items-->
         <scene sceneID="oqB-6X-78R">
             <objects>
                 <tableViewController id="9Ij-pE-79Y" customClass="ViewController" customModule="CheckWise2" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
                             <outlet property="delegate" destination="9Ij-pE-79Y" id="dtB-5P-iwL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Itmes" id="7Oq-BZ-hFc">
+                    <navigationItem key="navigationItem" title="Items" id="7Oq-BZ-hFc">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="menuIcon" id="EAm-fi-jeM">
                             <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>

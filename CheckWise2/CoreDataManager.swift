@@ -54,7 +54,7 @@ class CoreDataManager {
         }
     }
     
-    //Context speicher: Objekte werden gespeichert
+    //Context speichern: Objekte werden gespeichert
     func safeContext(){
         do {
             try context.save()
