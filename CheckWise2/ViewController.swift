@@ -46,6 +46,7 @@ class ViewController: UITableViewController {
         
         return cell
     }
+
     
     //CheckAccessory Funktion
     func checkAccessoryType(cell: UITableViewCell, isCompleted: Bool) {
@@ -84,8 +85,12 @@ class ViewController: UITableViewController {
         
         if let cell = tableView.cellForRow(at: indexPath){
             checkAccessoryType(cell: cell, isCompleted: todo.completed)
+            
+            //Implement: Tab or long press recognizer to tab check or update
+            //performSegue(withIdentifier: "ShowAddTodo", sender: tableView.cellForRow(at: indexPath))
         }
     }
+    
     
     //CheckSwipe
     override func tableView(_ tableView: UITableView,
@@ -116,21 +121,43 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let modifyAction = UIContextualAction(style: .destructive, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        
+        let deleteAction = UIContextualAction(style: .destructive, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             
-            /*let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
-            CoreDataManager.shared.safeContext()*/
+            //Animation
+            let range = NSMakeRange(0, self.tableView.numberOfSections)
+            let sections = NSIndexSet(indexesIn: range)
+            self.tableView.reloadSections(sections as IndexSet, with: .fade)
+            
+            //Call delete function from CoreDataManager.swift
+            let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
+            CoreDataManager.shared.deleteItems(item2: todo)
+            tableView.reloadData()
             
             print("Löschen")
             success(true)
         })
-        modifyAction.image = UIImage(named: "trash1")
-        modifyAction.backgroundColor = .red
+        deleteAction.image = UIImage(named: "trash1")
+        deleteAction.backgroundColor = .red
         
-        return UISwipeActionsConfiguration(actions: [modifyAction])
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
-    
+    //Alternative
+    /*
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
+            CoreDataManager.shared.deleteItems(item2: todo)
+            todoTableView.deleteRows(at: [indexPath], with: .fade)
+            CoreDataManager.shared.safeContext()
+            tableView.reloadData()
+            print("wurde gelöscht")
+        }
+        
+    }*/
     
     /*
     // Override to support conditional editing of the table view.

@@ -54,6 +54,22 @@ class CoreDataManager {
         }
     }
     
+    func getIndex(item: Todo) -> Int{
+        guard let index =  todos.firstIndex(of: item) else { return 0 }
+        return index
+    }
+    
+    func deleteAll (){
+        //If (todo.comoplete = true){}
+        todos.removeAll()
+        CoreDataManager.shared.safeContext()
+    }
+    
+    func deleteItems(item2: Todo){
+        todos.remove(at: getIndex(item: item2))
+        CoreDataManager.shared.safeContext()
+    }
+    
     //Context speichern: Objekte werden gespeichert
     func safeContext(){
         do {
