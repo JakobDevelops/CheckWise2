@@ -14,6 +14,7 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     public var todos = [Todo]()
     
+    
     // Cotnext als Variable
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //Zugriff auf App-Delegate
     
@@ -60,14 +61,16 @@ class CoreDataManager {
     }
     
     func deleteAll (){
-        //If (todo.comoplete = true){}
+        //If (todo.comoplete = true){} für späteren Floating Button
         todos.removeAll()
         CoreDataManager.shared.safeContext()
     }
     
     func deleteItems(item2: Todo){
+        context.delete(item2)
         todos.remove(at: getIndex(item: item2))
         CoreDataManager.shared.safeContext()
+        print("Objekt gelöscht. Context gepseichert.")
     }
     
     //Context speichern: Objekte werden gespeichert
@@ -77,5 +80,10 @@ class CoreDataManager {
         } catch  {
             print(error.localizedDescription)
         }
+    }
+    
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
     }
 }

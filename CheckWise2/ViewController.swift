@@ -133,8 +133,6 @@ class ViewController: UITableViewController {
             let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
             CoreDataManager.shared.deleteItems(item2: todo)
             tableView.reloadData()
-            
-            print("Löschen")
             success(true)
         })
         deleteAction.image = UIImage(named: "trash1")
