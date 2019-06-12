@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UITableViewController {
 
@@ -14,6 +15,13 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /* tapRecognizer
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("longPress:"))
+        let tabRecognizer = UITapGestureRecognizer (target: self, action: "shortTab")
+        
+        self.view.addGestureRecognizer(tabRecognizer)
+        self.view.addGestureRecognizer(longPressRecognizer)*/
         
         todoTableView.delegate = self //Abspeicherung einer Referenz zum ViewController
         todoTableView.dataSource = self
@@ -53,6 +61,9 @@ class ViewController: UITableViewController {
         if isCompleted {
             cell.accessoryType = .checkmark
             
+            let textColorGray = UIColor.lightGray
+            cell.textLabel?.textColor = textColorGray
+            
             //Strikethough Methode
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: cell.textLabel!.text!)
             
@@ -65,6 +76,10 @@ class ViewController: UITableViewController {
             
             //Kein Strikethrough mehr
             let underLineColor = UIColor(white: 1, alpha: 0)
+            
+            let textColor = UIColor.darkGray
+            cell.textLabel?.textColor = textColor
+            
             let underlineAttributes = [NSAttributedString.Key.underlineColor: underLineColor] as [NSAttributedString.Key : Any]
     
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: cell.textLabel!.text!, attributes: underlineAttributes)
@@ -80,6 +95,10 @@ class ViewController: UITableViewController {
     //Check Tab
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
+        
+        //Haptic Feedback
+        AudioServicesPlaySystemSound(1520)
+        
         todo.completed = !todo.completed
         CoreDataManager.shared.safeContext()
         
@@ -91,12 +110,14 @@ class ViewController: UITableViewController {
         }
     }
     
-    
     //CheckSwipe
     override func tableView(_ tableView: UITableView,
                    leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let closeAction = UIContextualAction(style: .normal, title:  "Check", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            //Haptic Feedback
+            AudioServicesPlaySystemSound(1519)
             
             let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
             todo.completed = !todo.completed
@@ -124,6 +145,9 @@ class ViewController: UITableViewController {
         
         let deleteAction = UIContextualAction(style: .destructive, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             
+            //Haptic Feedback
+            AudioServicesPlaySystemSound(1519)
+            
             //Animation
             let range = NSMakeRange(0, self.tableView.numberOfSections)
             let sections = NSIndexSet(indexesIn: range)
@@ -141,21 +165,34 @@ class ViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
-    //Alternative
-    /*
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    
+    /*Gesture
+     func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+     
+     if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+     
+     let touchPoint = longPressGestureRecognizer.location(in: self.view)
+     if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+     
+     let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
+     print("Klappt")
+     
+     // your code here, get the row for the indexPath or do whatever you want
+     }
+     }
+     }*/
+    
+    //call with "self.showAlert()"
+    func showAlert(){
+        // create the alert
+        let alert = UIAlertController(title: "My Title", message: "This is my message.", preferredStyle: UIAlertController.Style.alert)
         
-        if editingStyle == .delete {
-            
-            let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
-            CoreDataManager.shared.deleteItems(item2: todo)
-            todoTableView.deleteRows(at: [indexPath], with: .fade)
-            CoreDataManager.shared.safeContext()
-            tableView.reloadData()
-            print("wurde gelöscht")
-        }
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         
-    }*/
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
     
     /*
     // Override to support conditional editing of the table view.

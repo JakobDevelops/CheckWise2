@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AudioToolbox
 
 class AddTodoViewController: UIViewController {
     
@@ -28,9 +29,16 @@ class AddTodoViewController: UIViewController {
             object: nil)
         
         textView.becomeFirstResponder() //Anweisung, dass die TextView direkt ausgewählt ist beim öffnen der Aktivität
+            }
+    
+    //Maximale Länge der Eingabe = 20
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        return numberOfChars < 20// 20 Limit Value
         
-        // Do any additional setup after loading the view.
     }
+    
     
     //Methode um den Bottom Constraint anzupassen, sobald das Keyboard sich öffnet
     @objc func keyboardWillShow(with notification: Notification){
@@ -50,21 +58,25 @@ class AddTodoViewController: UIViewController {
     
     @IBAction func cancel(_ sender: UIButton) {
         dismiss(animated: true)
+        AudioServicesPlaySystemSound(1520)
         textView.resignFirstResponder()
         //wenn cancel gedrückt wird, wird das Keyboard instant geschlossen
     }
     
     @IBAction func done(_ sender: UIButton) {
+        //Add alert message if nothing has been added and play AudioServicesPlaySystemSound(1521)
+        
+        AudioServicesPlaySystemSound(1520)
         guard let text = textView.text else {
             print("Bitte Text eingeben")
             return
         }
         CoreDataManager.shared.createObj(name: text)
+    
         
         dismiss(animated: true)
         textView.resignFirstResponder() //schließt Keyboard direkt nachdem done gedrückt wurde
     }
-    
 }
 
 extension AddTodoViewController: UITextViewDelegate{
