@@ -16,6 +16,7 @@
 		F0AA65A6229CF6D40025CD6D /* CheckWise2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA65A5229CF6D40025CD6D /* CheckWise2UITests.swift */; };
 		F0AA65B4229CFA420025CD6D /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA65B3229CFA420025CD6D /* AddTodoViewController.swift */; };
 		F0AA65B8229D1A9E0025CD6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA65B7229D1A9E0025CD6D /* ViewController.swift */; };
+		F0CCFC9622B2164A00C1D920 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CCFC9522B2164A00C1D920 /* CreditViewController.swift */; };
 		F0FE68D4229E2AD2002B5337 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE68D3229E2AD2002B5337 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		F0AA65A7229CF6D40025CD6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0AA65B3229CFA420025CD6D /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		F0AA65B7229D1A9E0025CD6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F0CCFC9522B2164A00C1D920 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
 		F0FE68D3229E2AD2002B5337 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,8 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				F0AA6582229CF6D20025CD6D /* AppDelegate.swift */,
-				F0AA65B3229CFA420025CD6D /* AddTodoViewController.swift */,
 				F0AA65B7229D1A9E0025CD6D /* ViewController.swift */,
+				F0AA65B3229CFA420025CD6D /* AddTodoViewController.swift */,
+				F0CCFC9522B2164A00C1D920 /* CreditViewController.swift */,
 				F0AA6586229CF6D20025CD6D /* Main.storyboard */,
 				F0AA658C229CF6D40025CD6D /* Assets.xcassets */,
 				F0AA658E229CF6D40025CD6D /* LaunchScreen.storyboard */,
@@ -270,6 +273,7 @@
 				F0AA65B8229D1A9E0025CD6D /* ViewController.swift in Sources */,
 				F0FE68D4229E2AD2002B5337 /* CoreDataManager.swift in Sources */,
 				F0AA6583229CF6D20025CD6D /* AppDelegate.swift in Sources */,
+				F0CCFC9622B2164A00C1D920 /* CreditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

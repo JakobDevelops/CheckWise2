@@ -66,17 +66,38 @@ class AddTodoViewController: UIViewController {
     @IBAction func done(_ sender: UIButton) {
         //Add alert message if nothing has been added and play AudioServicesPlaySystemSound(1521)
         
+        if (getLenght() > 0){
+        
+            createItem()
+            
+        } else {
+        
+            AudioServicesPlaySystemSound(1521)
+            let alert = UIAlertController(title: "Wait a minute!", message: "You haven´t typed anything. Are you sure you want to proceed?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                self.createItem()}))
+            
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func getLenght() -> Int {
+        return textView.text.count
+    }
+    
+    func createItem(){
         AudioServicesPlaySystemSound(1520)
         guard let text = textView.text else {
             print("Bitte Text eingeben")
             return
         }
         CoreDataManager.shared.createObj(name: text)
-    
-        
         dismiss(animated: true)
-        textView.resignFirstResponder() //schließt Keyboard direkt nachdem done gedrückt wurde
+        textView.resignFirstResponder()
     }
+    
 }
 
 extension AddTodoViewController: UITextViewDelegate{
