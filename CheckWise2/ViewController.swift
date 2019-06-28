@@ -12,7 +12,8 @@ import AudioToolbox
 class ViewController: UITableViewController {
 
     @IBOutlet var todoTableView: UITableView!
-
+    @IBOutlet weak var deleteAll: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +27,20 @@ class ViewController: UITableViewController {
         todoTableView.delegate = self //Abspeicherung einer Referenz zum ViewController
         todoTableView.dataSource = self
     }
+    
+    let transition = SlideInTransition()
+    
+    @IBAction func didTab(_ sender: UIBarButtonItem) {
+        guard  let menuViewContoller = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
+        
+        /*menuViewContoller.didTapMenuType = { menuType in
+            print(menuType)
+        }*/
+        menuViewContoller.modalPresentationStyle = .overCurrentContext
+        menuViewContoller.transitioningDelegate = self
+        present(menuViewContoller, animated: true)
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         CoreDataManager.shared.loadItems()
@@ -56,7 +71,7 @@ class ViewController: UITableViewController {
     }
 
     
-    //CheckAccessory Funktion
+    //Strikethrough
     func checkAccessoryType(cell: UITableViewCell, isCompleted: Bool) {
         if isCompleted {
             cell.accessoryType = .checkmark
@@ -165,6 +180,11 @@ class ViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
+    @IBAction func deleteAll(_ sender: Any) {
+
+    }
+    
+    
     
     /*Gesture
      func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
@@ -182,35 +202,11 @@ class ViewController: UITableViewController {
      }
      }*/
     
-    //call with "self.showAlert()"
-    func showAlert(){
-        // create the alert
-        let alert = UIAlertController(title: "My Title", message: "This is my message.", preferredStyle: UIAlertController.Style.alert)
-        
-        // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
     }
     */
 
@@ -239,4 +235,16 @@ class ViewController: UITableViewController {
     }
     */
 
+}
+
+extension ViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.isPresenting = true
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+       transition.isPresenting = false
+        return transition
+    }
 }

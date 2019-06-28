@@ -65,7 +65,7 @@ class CoreDataManager {
         todos.removeAll()
         CoreDataManager.shared.safeContext()
     }
-    
+
     func deleteItems(item2: Todo){
         context.delete(item2)
         todos.remove(at: getIndex(item: item2))
@@ -86,4 +86,5 @@ class CoreDataManager {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
+
 }

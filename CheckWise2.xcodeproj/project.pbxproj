@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F082CF1422C60D34004E3C31 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F082CF1322C60D34004E3C31 /* MenuViewController.swift */; };
+		F082CF1622C60EB8004E3C31 /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F082CF1522C60EB8004E3C31 /* SlideInTransition.swift */; };
 		F0AA6583229CF6D20025CD6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA6582229CF6D20025CD6D /* AppDelegate.swift */; };
 		F0AA6588229CF6D20025CD6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0AA6586229CF6D20025CD6D /* Main.storyboard */; };
 		F0AA658B229CF6D20025CD6D /* CheckWise2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0AA6589229CF6D20025CD6D /* CheckWise2.xcdatamodeld */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F082CF1322C60D34004E3C31 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		F082CF1522C60EB8004E3C31 /* SlideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
 		F0AA657F229CF6D20025CD6D /* CheckWise2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckWise2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AA6582229CF6D20025CD6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0AA6587229CF6D20025CD6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,16 +109,18 @@
 		F0AA6581229CF6D20025CD6D /* CheckWise2 */ = {
 			isa = PBXGroup;
 			children = (
+				F0AA6586229CF6D20025CD6D /* Main.storyboard */,
+				F0AA658E229CF6D40025CD6D /* LaunchScreen.storyboard */,
+				F0AA6591229CF6D40025CD6D /* Info.plist */,
+				F0FE68D3229E2AD2002B5337 /* CoreDataManager.swift */,
+				F0AA6589229CF6D20025CD6D /* CheckWise2.xcdatamodeld */,
+				F0AA658C229CF6D40025CD6D /* Assets.xcassets */,
 				F0AA6582229CF6D20025CD6D /* AppDelegate.swift */,
 				F0AA65B7229D1A9E0025CD6D /* ViewController.swift */,
 				F0AA65B3229CFA420025CD6D /* AddTodoViewController.swift */,
+				F082CF1322C60D34004E3C31 /* MenuViewController.swift */,
+				F082CF1522C60EB8004E3C31 /* SlideInTransition.swift */,
 				F0CCFC9522B2164A00C1D920 /* CreditViewController.swift */,
-				F0AA6586229CF6D20025CD6D /* Main.storyboard */,
-				F0AA658C229CF6D40025CD6D /* Assets.xcassets */,
-				F0AA658E229CF6D40025CD6D /* LaunchScreen.storyboard */,
-				F0AA6591229CF6D40025CD6D /* Info.plist */,
-				F0AA6589229CF6D20025CD6D /* CheckWise2.xcdatamodeld */,
-				F0FE68D3229E2AD2002B5337 /* CoreDataManager.swift */,
 			);
 			path = CheckWise2;
 			sourceTree = "<group>";
@@ -271,7 +277,9 @@
 				F0AA65B4229CFA420025CD6D /* AddTodoViewController.swift in Sources */,
 				F0AA658B229CF6D20025CD6D /* CheckWise2.xcdatamodeld in Sources */,
 				F0AA65B8229D1A9E0025CD6D /* ViewController.swift in Sources */,
+				F082CF1422C60D34004E3C31 /* MenuViewController.swift in Sources */,
 				F0FE68D4229E2AD2002B5337 /* CoreDataManager.swift in Sources */,
+				F082CF1622C60EB8004E3C31 /* SlideInTransition.swift in Sources */,
 				F0AA6583229CF6D20025CD6D /* AppDelegate.swift in Sources */,
 				F0CCFC9622B2164A00C1D920 /* CreditViewController.swift in Sources */,
 			);

@@ -31,15 +31,6 @@ class AddTodoViewController: UIViewController {
         textView.becomeFirstResponder() //Anweisung, dass die TextView direkt ausgewählt ist beim öffnen der Aktivität
             }
     
-    //Maximale Länge der Eingabe = 20
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-        let numberOfChars = newText.count
-        return numberOfChars < 20// 20 Limit Value
-        
-    }
-    
-    
     //Methode um den Bottom Constraint anzupassen, sobald das Keyboard sich öffnet
     @objc func keyboardWillShow(with notification: Notification){
         
@@ -53,8 +44,8 @@ class AddTodoViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
-        
     }
+    
     
     @IBAction func cancel(_ sender: UIButton) {
         dismiss(animated: true)
@@ -73,11 +64,11 @@ class AddTodoViewController: UIViewController {
         } else {
         
             AudioServicesPlaySystemSound(1521)
-            let alert = UIAlertController(title: "Wait a minute!", message: "You haven´t typed anything. Are you sure you want to proceed?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Wait a minute!", message: "You haven't typed anything. Are you sure you want to proceed?", preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
                 self.createItem()}))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             
             self.present(alert, animated: true)
         }
@@ -96,6 +87,14 @@ class AddTodoViewController: UIViewController {
         CoreDataManager.shared.createObj(name: text)
         dismiss(animated: true)
         textView.resignFirstResponder()
+    }
+    
+    //Maximale Länge der Eingabe = 20
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        return numberOfChars < 20// 20 Limit Value
+        
     }
     
 }
