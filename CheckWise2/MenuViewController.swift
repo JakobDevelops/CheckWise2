@@ -22,13 +22,11 @@ class MenuViewController: UITableViewController {
     }
     
     @IBAction func buttonSupport(_ sender: UIButton) {
-        dismiss(animated: true)
-        openCredits()
-        print("Tap on Credit")
+        openSupport()
+        print("Tap on Support")
     }
     
     @IBAction func buttonAbout(_ sender: UIButton) {
-        dismiss(animated: true)
         print("Tap on About")
     }
 
@@ -37,14 +35,16 @@ class MenuViewController: UITableViewController {
         print("Tap on Synchronisation")
     }
     
-    func openCredits() {
-    let creditView:CreditViewController = CreditViewController()
-    self.present(creditView, animated: true, completion: nil)
-    
+    func openSupport() {
+        guard  let creditViewContoller = storyboard?.instantiateViewController(withIdentifier: "support") as? CreditViewController else { return }
+        present(creditViewContoller, animated: true)
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
     }
     
     /*

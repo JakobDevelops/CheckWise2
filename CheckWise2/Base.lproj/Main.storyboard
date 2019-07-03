@@ -86,7 +86,7 @@
         <!--Credit View Controller-->
         <scene sceneID="u70-HB-yKM">
             <objects>
-                <viewController storyboardIdentifier="credit" id="Ygo-Kg-Y4B" customClass="CreditViewController" customModule="CheckWise2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="support" id="Ygo-Kg-Y4B" customClass="CreditViewController" customModule="CheckWise2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TOu-62-UX3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -352,7 +352,7 @@
         <!--Navigation Controller-->
         <scene sceneID="bgl-K6-Drm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="aq0-ed-5zh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="main" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="aq0-ed-5zh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="DzP-7M-TfK">
@@ -434,7 +434,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orange_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="6bw-v8-hCt">
-                                                    <rect key="frame" x="16" y="34" width="24" height="24.000000000000114"/>
+                                                    <rect key="frame" x="16" y="34" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="Fp0-20-0Cl"/>
                                                         <constraint firstAttribute="height" constant="24" id="jDY-D1-qfV"/>
@@ -526,7 +526,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rocket" translatesAutoresizingMaskIntoConstraints="NO" id="Obe-Ro-sQ5">
-                                                    <rect key="frame" x="16" y="34" width="24" height="24.000000000000114"/>
+                                                    <rect key="frame" x="16" y="34" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="70q-dO-c3O"/>
                                                         <constraint firstAttribute="width" constant="24" id="Bxo-OE-SB5"/>

@@ -50,12 +50,10 @@ class CreditViewController: UIViewController {
     
     }
     
-    
-    
-    
-    
+
     @IBAction func cancelButton(_ sender: Any) {
-        dismiss(animated: true)
+        dismiss(animated: true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
 }

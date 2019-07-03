@@ -32,10 +32,6 @@ class ViewController: UITableViewController {
     
     @IBAction func didTab(_ sender: UIBarButtonItem) {
         guard  let menuViewContoller = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
-        
-        /*menuViewContoller.didTapMenuType = { menuType in
-            print(menuType)
-        }*/
         menuViewContoller.modalPresentationStyle = .overCurrentContext
         menuViewContoller.transitioningDelegate = self
         present(menuViewContoller, animated: true)
