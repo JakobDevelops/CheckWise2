@@ -16,14 +16,7 @@ class CreditViewController: UIViewController {
     @IBOutlet weak var button349: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
-    
-    @IBOutlet weak var milk: UIImageView!
-    @IBOutlet weak var egg1: UIImageView!
-    @IBOutlet weak var banana: UIImageView!
-    @IBOutlet weak var apple: UIImageView!
-    @IBOutlet weak var lime: UIImageView!
-    @IBOutlet weak var egg2: UIImageView!
-    
+    @IBOutlet weak var band: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,16 +25,8 @@ class CreditViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 0.1, animations:{
-            self.milk.isHidden = false
-        }){
-            (finished) in
-            //self.creditText.isHidden = false
-            //player.play()
-        }
-        
-        UIView.animate(withDuration: 0.1, delay: 0.3, animations:{
-            self.banana.isHidden = false
+        UIView.animate(withDuration: 30, delay: 0.0, options: .curveEaseInOut, animations:{
+            self.band.frame = CGRect (x: 0, y: 610, width: 1542, height: 203)
         }){
             (finished) in
             //self.creditText.isHidden = false

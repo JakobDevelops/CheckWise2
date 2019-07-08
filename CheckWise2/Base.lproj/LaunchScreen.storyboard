@@ -18,16 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bildschirmfoto 2019-05-08 um 14.38.41" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-o0-92m">
-                                <rect key="frame" x="87" y="272" width="240" height="352"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_checkwise" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-o0-92m">
+                                <rect key="frame" x="107" y="344.5" width="200" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="207" id="G8J-w9-gWI"/>
+                                    <constraint firstAttribute="width" constant="200" id="Is6-oz-Poe"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7XE-o0-92m" secondAttribute="trailing" constant="87" id="CE6-kE-V98"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7XE-o0-92m" secondAttribute="bottom" constant="238" id="Kj2-jd-99k"/>
-                            <constraint firstItem="7XE-o0-92m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="Pab-cu-QwP"/>
-                            <constraint firstItem="7XE-o0-92m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="228" id="WX0-a0-ZGg"/>
+                            <constraint firstItem="7XE-o0-92m" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aom-c2-zaz"/>
+                            <constraint firstItem="7XE-o0-92m" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="mTu-as-ce0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bildschirmfoto 2019-05-08 um 14.38.41" width="584" height="1120"/>
+        <image name="logo_checkwise" width="2286" height="2081"/>
     </resources>
 </document>
