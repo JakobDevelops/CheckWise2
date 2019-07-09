@@ -49,16 +49,15 @@ class AddTodoViewController: UIViewController {
     
     @IBAction func cancel(_ sender: UIButton) {
         dismiss(animated: true)
-        AudioServicesPlaySystemSound(1520)
         textView.resignFirstResponder()
         //wenn cancel gedrückt wird, wird das Keyboard instant geschlossen
     }
     
     @IBAction func done(_ sender: UIButton) {
-        //Add alert message if nothing has been added and play AudioServicesPlaySystemSound(1521)
         
         if (getLenght() > 0){
         
+            AudioServicesPlaySystemSound(1522)
             createItem()
             
         } else {

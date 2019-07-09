@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import AudioToolbox
+
 
 class CreditViewController: UIViewController {
 
@@ -37,6 +39,7 @@ class CreditViewController: UIViewController {
     
 
     @IBAction func cancelButton(_ sender: Any) {
+        AudioServicesPlaySystemSound(1520)
         dismiss(animated: true, completion: nil)
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }

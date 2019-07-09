@@ -109,6 +109,8 @@ class ViewController: UITableViewController {
         
         //Haptic Feedback
         AudioServicesPlaySystemSound(1520)
+        AudioServicesPlaySystemSound(1306)
+
         
         todo.completed = !todo.completed
         CoreDataManager.shared.safeContext()
@@ -129,6 +131,7 @@ class ViewController: UITableViewController {
             
             //Haptic Feedback
             AudioServicesPlaySystemSound(1519)
+            AudioServicesPlaySystemSound(1305)
             
             let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
             todo.completed = !todo.completed
@@ -158,6 +161,7 @@ class ViewController: UITableViewController {
             
             //Haptic Feedback
             AudioServicesPlaySystemSound(1519)
+            AudioServicesPlaySystemSound(1305)
             
             //Animation
             let range = NSMakeRange(0, self.tableView.numberOfSections)

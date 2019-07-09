@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F061336D22D4920900B72FBD /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F061336C22D4920900B72FBD /* SyncViewController.swift */; };
+		F061336F22D4954000B72FBD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F061336E22D4954000B72FBD /* AboutViewController.swift */; };
 		F082CF1422C60D34004E3C31 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F082CF1322C60D34004E3C31 /* MenuViewController.swift */; };
 		F082CF1622C60EB8004E3C31 /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F082CF1522C60EB8004E3C31 /* SlideInTransition.swift */; };
 		F0AA6583229CF6D20025CD6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA6582229CF6D20025CD6D /* AppDelegate.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F061336C22D4920900B72FBD /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
+		F061336E22D4954000B72FBD /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		F082CF1322C60D34004E3C31 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F082CF1522C60EB8004E3C31 /* SlideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
 		F0AA657F229CF6D20025CD6D /* CheckWise2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckWise2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,12 +119,14 @@
 				F0FE68D3229E2AD2002B5337 /* CoreDataManager.swift */,
 				F0AA6589229CF6D20025CD6D /* CheckWise2.xcdatamodeld */,
 				F0AA658C229CF6D40025CD6D /* Assets.xcassets */,
+				F082CF1522C60EB8004E3C31 /* SlideInTransition.swift */,
 				F0AA6582229CF6D20025CD6D /* AppDelegate.swift */,
 				F0AA65B7229D1A9E0025CD6D /* ViewController.swift */,
 				F0AA65B3229CFA420025CD6D /* AddTodoViewController.swift */,
 				F082CF1322C60D34004E3C31 /* MenuViewController.swift */,
-				F082CF1522C60EB8004E3C31 /* SlideInTransition.swift */,
+				F061336C22D4920900B72FBD /* SyncViewController.swift */,
 				F0CCFC9522B2164A00C1D920 /* CreditViewController.swift */,
+				F061336E22D4954000B72FBD /* AboutViewController.swift */,
 			);
 			path = CheckWise2;
 			sourceTree = "<group>";
@@ -274,10 +280,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F061336D22D4920900B72FBD /* SyncViewController.swift in Sources */,
 				F0AA65B4229CFA420025CD6D /* AddTodoViewController.swift in Sources */,
 				F0AA658B229CF6D20025CD6D /* CheckWise2.xcdatamodeld in Sources */,
 				F0AA65B8229D1A9E0025CD6D /* ViewController.swift in Sources */,
 				F082CF1422C60D34004E3C31 /* MenuViewController.swift in Sources */,
+				F061336F22D4954000B72FBD /* AboutViewController.swift in Sources */,
 				F0FE68D4229E2AD2002B5337 /* CoreDataManager.swift in Sources */,
 				F082CF1622C60EB8004E3C31 /* SlideInTransition.swift in Sources */,
 				F0AA6583229CF6D20025CD6D /* AppDelegate.swift in Sources */,
