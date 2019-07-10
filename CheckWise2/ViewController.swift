@@ -181,7 +181,8 @@ class ViewController: UITableViewController {
     }
     
     @IBAction func deleteAll(_ sender: Any) {
-
+        CoreDataManager.shared.deleteAllRecords()
+        tableView.reloadData()
     }
     
     

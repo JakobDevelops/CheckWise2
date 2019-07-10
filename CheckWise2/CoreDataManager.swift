@@ -60,12 +60,33 @@ class CoreDataManager {
         return index
     }
     
-    func deleteAll (){
-        //If (todo.comoplete = true){} für späteren Floating Button
+    func deleteAll(){
         todos.removeAll()
+        //CoreDataManager.shared.safeContext()
+    }
+    
+    func deleteSelectedItems(){
+        //for Schleife
         CoreDataManager.shared.safeContext()
     }
-
+    
+    func deleteAllRecords() {
+    
+        todos.removeAll()
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Todo")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
+        }
+        
+        CoreDataManager.shared.safeContext()
+    }
+    
+   
     func deleteItems(item2: Todo){
         context.delete(item2)
         todos.remove(at: getIndex(item: item2))
