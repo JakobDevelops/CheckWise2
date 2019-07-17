@@ -109,7 +109,7 @@ class ViewController: UITableViewController {
         
         //Haptic Feedback
         AudioServicesPlaySystemSound(1520)
-        AudioServicesPlaySystemSound(1306)
+        AudioServicesPlaySystemSound(1103)
 
         
         todo.completed = !todo.completed
@@ -131,7 +131,7 @@ class ViewController: UITableViewController {
             
             //Haptic Feedback
             AudioServicesPlaySystemSound(1519)
-            AudioServicesPlaySystemSound(1305)
+            //AudioServicesPlaySystemSound(1305)
             
             let todo = CoreDataManager.shared.getTodoItem(index: indexPath.row)
             todo.completed = !todo.completed
@@ -161,7 +161,7 @@ class ViewController: UITableViewController {
             
             //Haptic Feedback
             AudioServicesPlaySystemSound(1519)
-            AudioServicesPlaySystemSound(1305)
+            //AudioServicesPlaySystemSound(1305)
             
             //Animation
             let range = NSMakeRange(0, self.tableView.numberOfSections)
@@ -181,6 +181,15 @@ class ViewController: UITableViewController {
     }
     
     @IBAction func deleteAll(_ sender: Any) {
+        //Haptic Feedback
+        AudioServicesPlaySystemSound(1102)
+    
+        //Animation
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        self.tableView.reloadSections(sections as IndexSet, with: .left)
+        
+        //Delete and Reload
         CoreDataManager.shared.deleteAllRecords()
         tableView.reloadData()
     }
