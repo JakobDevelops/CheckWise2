@@ -23,7 +23,7 @@ class CreditViewController: UIViewController {
         super.viewDidLoad()
         
     }
-    
+    /*
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -31,15 +31,13 @@ class CreditViewController: UIViewController {
             self.band.frame = CGRect (x: 0, y: 610, width: 1542, height: 203)
         }){
             (finished) in
-            //self.creditText.isHidden = false
-            //player.play()
         }
     
-    }
+    }*/
     
 
     @IBAction func cancelButton(_ sender: Any) {
-        AudioServicesPlaySystemSound(1102)
+        AudioServicesPlaySystemSound(1520)
 
         dismiss(animated: true, completion: nil)
         self.presentingViewController?.dismiss(animated: true, completion: nil)
