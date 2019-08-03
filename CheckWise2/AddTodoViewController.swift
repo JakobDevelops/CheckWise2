@@ -16,8 +16,11 @@ class AddTodoViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
+    
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +99,32 @@ class AddTodoViewController: UIViewController {
         
     }
     
+    
+    @IBAction func indexChanged(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex {
+            
+        case 0:
+            guard let text = textView.text else {
+                print("Bitte Text eingeben")
+                return
+            }
+            
+            CoreDataManager.shared.createObj(name: text)
+            dismiss(animated: true)
+            textView.resignFirstResponder()
+            
+        case 1:
+            let text = textView.text + "!"
+            
+            CoreDataManager.shared.createObj(name: text)
+            dismiss(animated: true)
+            textView.resignFirstResponder()
+            
+        default:
+            break
+        }
+    }
+
 }
 
 extension AddTodoViewController: UITextViewDelegate{
@@ -111,3 +140,36 @@ extension AddTodoViewController: UITextViewDelegate{
         }
     }
 }
+
+@IBDesignable extension UIButton {
+    
+    @IBInspectable var borderWidth: CGFloat {
+        set {
+            layer.borderWidth = newValue
+        }
+        get {
+            return layer.borderWidth
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        set {
+            layer.cornerRadius = newValue
+        }
+        get {
+            return layer.cornerRadius
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor? {
+        set {
+            guard let uiColor = newValue else { return }
+            layer.borderColor = uiColor.cgColor
+        }
+        get {
+            guard let color = layer.borderColor else { return nil }
+            return UIColor(cgColor: color)
+        }
+    }
+}
+
