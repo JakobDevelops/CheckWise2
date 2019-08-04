@@ -86,6 +86,7 @@ class AddTodoViewController: UIViewController {
             print("Bitte Text eingeben")
             return
         }
+        
         CoreDataManager.shared.createObj(name: text)
         dismiss(animated: true)
         textView.resignFirstResponder()
@@ -95,17 +96,16 @@ class AddTodoViewController: UIViewController {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfChars = newText.count
-        return numberOfChars < 20// 20 Limit Value
+        return numberOfChars < 20// Max 20 Characters
         
     }
     
-    
+    //Segmented Control to mark todos as important
     @IBAction func indexChanged(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex {
             
         case 0:
             guard let text = textView.text else {
-                print("Bitte Text eingeben")
                 return
             }
             
