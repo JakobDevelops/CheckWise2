@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_checkwise" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-o0-92m">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-o0-92m">
                                 <rect key="frame" x="107" y="344.5" width="200" height="207"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="207" id="G8J-w9-gWI"/>
@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo_checkwise" width="2286" height="2081"/>
+        <image name="splash" width="3050" height="3387"/>
     </resources>
 </document>

@@ -102,26 +102,42 @@ class AddTodoViewController: UIViewController {
     
     //Segmented Control to mark todos as important
     @IBAction func indexChanged(_ sender: Any) {
-        switch segmentedControl.selectedSegmentIndex {
+        
+        if (getLenght() > 1){
             
-        case 0:
-            guard let text = textView.text else {
-                return
+            AudioServicesPlaySystemSound(1522)
+            switch segmentedControl.selectedSegmentIndex {
+                
+            case 0:
+                guard let text = textView.text else {
+                    return
+                }
+                
+                CoreDataManager.shared.createObj(name: text)
+                dismiss(animated: true)
+                textView.resignFirstResponder()
+                
+            case 1:
+                let text = textView.text + "!"
+                
+                CoreDataManager.shared.createObj(name: text)
+                dismiss(animated: true)
+                textView.resignFirstResponder()
+                
+            default:
+                break
             }
             
-            CoreDataManager.shared.createObj(name: text)
-            dismiss(animated: true)
-            textView.resignFirstResponder()
+        } else {
             
-        case 1:
-            let text = textView.text + "!"
+            AudioServicesPlaySystemSound(1521)
+            let alert = UIAlertController(title: "Wait a minute!", message: "You haven't typed anything. Are you sure you want to proceed?", preferredStyle: .alert)
             
-            CoreDataManager.shared.createObj(name: text)
-            dismiss(animated: true)
-            textView.resignFirstResponder()
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                self.createItem()}))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             
-        default:
-            break
+            self.present(alert, animated: true)
         }
     }
 

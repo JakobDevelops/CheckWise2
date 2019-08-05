@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F056FAA222F85FC00039A212 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F056FAA122F85FC00039A212 /* StoreKit.framework */; };
 		F061336D22D4920900B72FBD /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F061336C22D4920900B72FBD /* SyncViewController.swift */; };
 		F061336F22D4954000B72FBD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F061336E22D4954000B72FBD /* AboutViewController.swift */; };
 		F082CF1422C60D34004E3C31 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F082CF1322C60D34004E3C31 /* MenuViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F056FAA122F85FC00039A212 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F061336C22D4920900B72FBD /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		F061336E22D4954000B72FBD /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		F082CF1322C60D34004E3C31 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F056FAA222F85FC00039A212 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F056FAA022F85FC00039A212 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F056FAA122F85FC00039A212 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F0AA6576229CF6D20025CD6D = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +110,7 @@
 				F0AA6599229CF6D40025CD6D /* CheckWise2Tests */,
 				F0AA65A4229CF6D40025CD6D /* CheckWise2UITests */,
 				F0AA6580229CF6D20025CD6D /* Products */,
+				F056FAA022F85FC00039A212 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -220,6 +232,11 @@
 				TargetAttributes = {
 					F0AA657E229CF6D20025CD6D = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					F0AA6595229CF6D40025CD6D = {
 						CreatedOnToolsVersion = 10.2.1;

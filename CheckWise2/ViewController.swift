@@ -56,7 +56,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if CoreDataManager.shared.getNumberOfItem() == 0 {
-            tableView.setEmptyView(title: "You don't have any Todos.", message: "Enjoy your day!", messageImage: #imageLiteral(resourceName: "swipe-right (1)"))
+            tableView.setEmptyView(title: "You don't have anything on your list.", message: "Enjoy your day!", messageImage: #imageLiteral(resourceName: "swipe-right (1)"))
         }
         else {
             tableView.restore()
